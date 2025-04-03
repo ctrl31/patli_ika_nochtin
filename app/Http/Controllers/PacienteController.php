@@ -42,4 +42,21 @@ class PacienteController extends Controller
     public function registraPaciente(){
         return view('register.registerPaciente');
     }
+
+    public function login(Request $request)
+{
+    $request->validate([
+        'telefono' => 'required|string',
+        'password' => 'required|string',
+    ]);
+
+    if (Auth::guard('paciente')->attempt(['telefono' => $request->telefono, 'password' => $request->password])) {
+        $request->session()->regenerate();
+        return redirect()->intended('/paciente/dashboard');
+    }
+
+    return back()->withErrors([
+        'telefono' => 'Las credenciales no coinciden con nuestros registros.',
+    ]);
+}
 }

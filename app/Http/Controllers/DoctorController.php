@@ -45,4 +45,21 @@ class DoctorController extends Controller
         return view('register.registerDoctor');
 
     }
+
+    public function login(Request $request)
+{
+    $request->validate([
+        'cedula' => 'required|string',
+        'password' => 'required|string',
+    ]);
+
+    if (Auth::guard('doctor')->attempt(['cedula' => $request->cedula, 'password' => $request->password])) {
+        $request->session()->regenerate();
+        return redirect()->intended('/doctor/dashboard');
+    }
+
+    return back()->withErrors([
+        'cedula' => 'Las credenciales no coinciden con nuestros registros.',
+    ]);
+}
 }
