@@ -6,8 +6,9 @@
     </title>
 
   <!--css -->
-  <link rel="stylesheet" href="{{asset('public/css/style.css')  }}">
-  <link rel="stylesheet" href="{{asset('public/css/bootsrap.min.css')  }}">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
  
     <!-- Aquí pueden ir tus enlaces a hojas de estilo -->
 </head>

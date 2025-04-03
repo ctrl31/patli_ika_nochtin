@@ -40,4 +40,9 @@ class DoctorController extends Controller
             'doctor' => $doctor
         ], 201);
     }
+    //Ruta view
+    public function registraDoctor(){
+        return view('register.registerDoctor');
+
+    }
 }

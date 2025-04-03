@@ -14,18 +14,24 @@
 
 
 @section('scripts')
-<script src="{{ asset('resources/js/bootstrap.js') }}"></script>
-<script src="{{ asset('resources/js/bootstrap copy.js') }}"></script>
-<script src="{{ asset('resources/js/jquery.validate.js') }}"></script>
-<script src="{{ asset('resources/js/bootstrap.bundle.js') }}"></script>
-<script src="{{ asset('resources/js/slider-setting.js') }}"></script>
-<script src="{{ asset('resources/js/popper.min.js') }}"></script>
-<script src="{{ asset('resources/js/plugin.js') }}"></script>
-<script src="{{ asset('resources/js/jquery.validate.js') }}"></script>
-<script src="{{ asset('resources/js/modernizer.js') }}"></script>
-<script src="{{ asset('resources/js/jquery-3.0.0.min.js') }}"></script>
-<script src="{{ asset('resources/js/bootstrap.min.js.js') }}"></script>
-<script src="{{ asset('resources/js/custom.js') }}"></script>
-<script src="{{ asset('resources/js/custom.js') }}"></script>
-<script src="{{ asset('resources/js/custom.js') }}"></script>
+
+
+
+<script src="{{ asset('/js/bootstrap.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.bundle.js.map') }}"></script>
+<script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.bundle.min.js.map') }}"></script>
+<script src="{{ asset('/js/bootstrap.js.map') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js.map') }}"></script>
+<script src="{{ asset('/js/custom.js') }}"></script>
+<script src="{{ asset('/js/jquery-3.0.0.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('/js/plugin.js') }}"></script>
+<script src="{{ asset('/js/popper.js') }}"></script>
+<script src="{{ asset('/js/popper.min.js') }}"></script>
+<script src="{{ asset('/js/slider-setting.js') }}"></script>
 @endsection

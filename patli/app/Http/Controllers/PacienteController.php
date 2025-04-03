@@ -38,4 +38,8 @@ class PacienteController extends Controller
             'paciente' => $paciente
         ], 201);
     }
+    //Ruta view
+    public function registraPaciente(){
+        return view('register.registerPaciente');
+    }
 }
