@@ -31,6 +31,7 @@ class PacienteController extends Controller
             'fecha_nacimiento' => $request->fecha_nacimiento,
             'sexo' => $request->sexo,
             'password' => Hash::make($request->password),
+            'urgencia' => false,
             // Los campos opcionales se omiten y tomarán valores null por defecto
         ]);
 
@@ -67,30 +68,13 @@ public function actualizarDatos(Request $request)
     $paciente = auth()->guard('paciente')->user();
 
     $validated = $request->validate([
-        'telefono' => 'sometimes|string|max:20',
-        'email' => [
-            'sometimes',
-            'email',
-            'max:100',
-            Rule::unique('pacientes')->ignore($paciente->id)
-        ],
-        'fecha_nacimiento' => 'sometimes|date',
-        'curp' => 'sometimes|string|max:18',
-        'nss' => 'nullable|string|max:20',
-        'tipo_padecimiento' => [
-            'nullable',
-            'string',
-            Rule::in(['cronico', 'agudo', 'ninguno'])
-        ],
-        'descripcion' => 'nullable|string',
-        'sexo' => 'sometimes|string|max:10',
-        'discapacidad' => 'sometimes|boolean',
-        'peso' => 'nullable|numeric|between:0,300',
+        // ... otras validaciones ...
+        'urgencia' => 'sometimes|boolean',
     ]);
 
-    // Convertir CURP a mayúsculas si está presente
-    if (isset($validated['curp'])) {
-        $validated['curp'] = strtoupper($validated['curp']);
+    // Para manejar el input como "Urgente"/"Malestar leve"
+    if ($request->has('urgencia_text')) {
+        $validated['urgencia'] = $request->urgencia_text === 'Urgente';
     }
 
     $paciente->update($validated);

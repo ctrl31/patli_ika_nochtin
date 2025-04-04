@@ -62,4 +62,14 @@ class DoctorController extends Controller
         'cedula' => 'Las credenciales no coinciden con nuestros registros.',
     ]);
 }
+
+
+public function listarPacientesUrgentes()
+{
+    $pacientesUrgentes = Paciente::where('urgencia', true)->get();
+
+    return view('doctor.pacientes-urgentes', [
+        'pacientes' => $pacientesUrgentes
+    ]);
+}
 }

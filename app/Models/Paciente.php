@@ -28,6 +28,7 @@ class Paciente extends Model
         'sexo',
         'discapacidad',
         'peso',
+        'urgencia',
     ];
 
     protected $casts = [
@@ -36,6 +37,7 @@ class Paciente extends Model
         'peso' => 'decimal:2',
         'email_verified_at' => 'datetime',
         'tipo_padecimiento' => 'string',
+        'urgencia' => 'boolean',
     ];
 
     protected $hidden = [
