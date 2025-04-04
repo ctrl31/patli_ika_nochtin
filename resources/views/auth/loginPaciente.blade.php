@@ -34,7 +34,8 @@
                         </div>
                     </form>
                     <!-- Enlace de recuperación de contraseña -->
-                    <div class="text-center mt-3">
+                    <div class="d-flex justify-content-between mt-3">
+                        <a href="{{ route('registraPaciente') }}" class="text-decoration-none">Registrate</a>
                         <a href="{{ route('password.request') }}" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
                     </div>
                 </div>
