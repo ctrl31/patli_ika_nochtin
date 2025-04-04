@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paciente;
+
+use App\Models\Pacientes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,7 +23,7 @@ class PacienteController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-        $paciente = Paciente::create([
+        $paciente = Pacientes::create([
             'nombres' => $request->nombres,
             'apellidos' => $request->apellidos,
             'telefono' => $request->telefono,
