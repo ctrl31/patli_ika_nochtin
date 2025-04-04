@@ -8,19 +8,14 @@
                <div class="col-lg-4 col-sm-6">
                   <div class="box_main">
                      <div class="icon_1"><img src="images/icon-2.png"></div>
-                     <h4 class="daily_text">Daily care experts</h4>
+                     <h4 class="daily_text">¿Eres Doctor o Especialista?</h4>
                   </div>
                </div>
-               <div class="col-lg-4 col-sm-6">
-                  <div class="box_main active">
-                     <div class="icon_1"><img src="images/icon-3.png"></div>
-                     <h4 class="daily_text_1">Available 24/7</h4>
-                  </div>
-               </div>
+               
                <div class="col-lg-4 col-sm-6">
                   <div class="box_main">
                      <div class="icon_1"><img src="images/icon-4.png"></div>
-                     <h4 class="daily_text_1">Balanced care</h4>
+                     <h4 class="daily_text_1">¿Eres paciente?</h4>
                   </div>
                </div>
             </div>

@@ -590,6 +590,15 @@ button {
     padding: 40px;
 }
 
+.box_mainn{
+    width: 100%;
+    float: left;
+    background-color: #252525;
+    height: auto;
+    border-radius: 15px;
+    padding: 40px;
+}
+
 .box_main:hover {
     background-color: #1becde;
 }
