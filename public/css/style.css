@@ -24,6 +24,7 @@
 @import url(jquery.fancybox.min.css);
 @import url(jquery-ui.css);
 @import url(nice-select.css);
+@import url(botton.css);
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
@@ -34,7 +35,11 @@
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 
 body {
     color: #666666;
@@ -43,6 +48,12 @@ body {
     line-height: 1.80857;
     font-weight: normal;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -401,11 +412,15 @@ button {
     top: -40px;
 }
 
+main.flex-grow-1 {
+    padding: 20px; /* o tu margen personalizado */
+  }
 .main {
     width: 100%;
     margin: 40px 0px 0px 40px;
     box-shadow: 0px 0px 14px 2px #f3f3f3;
     position: relative;
+    flex-grow: 1;
 }
 
 .main::after {

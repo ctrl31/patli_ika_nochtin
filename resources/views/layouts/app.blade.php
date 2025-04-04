@@ -20,22 +20,19 @@
     <!-- Aquí pueden ir tus enlaces a hojas de estilo -->
 </head>
 <body>
-    
-    @include('layouts.header')
+  <div class="d-flex flex-column min-vh-100">
+      @include('layouts.header')
 
+      <main class="flex-grow-1">
+          @yield('content')
+      </main>
 
-    <!-- Contenido principal -->
-     @yield('content')
+      @include('layouts.footer')
+  </div>
 
-
-     @include('layouts.footer')
-
-
-
-    <!-- Scripts comunes -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <!-- Espacio para scripts específicos de vistas -->
-    @stack('scripts')
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  @stack('scripts')
 </body>
+
 </html>

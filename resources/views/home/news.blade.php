@@ -1,27 +1,28 @@
-<!-- parte a utilizar despues de paciente dotor-->
-<div class="news_section layout_padding">
-      <div class="container">
-         <h1 class="health_taital">Why choose 24hr home care</h1>
-         <p class="health_text">labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-         <div class="news_section_2 layout_padding">
-            <div class="row">
-               <div class="col-lg-4 col-sm-6">
-                  <div class="box_main">
-                     <div class="icon_1"><img src="images/icon-2.png"></div>
-                     <h4 class="daily_text">Daily care experts</h4>
-                  </div>
-               </div>
-               
 
-               <div class="col-lg-4 col-sm-6">
-                  <div class="box_main">
-                     <div class="icon_1"><img src="images/icon-4.png"></div>
-                     <h4 class="daily_text_1">Balanced care</h4>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="getquote_bt"><a href="#">Get A Quote <span><img src="images/right-arrow.png"></span></a></div>
-      </div>
-   </div>
-   <!-- news section end -->        
+
+<!-- Contenedor principal -->
+<div class="container py-5">
+  <div class="text-center mb-4">
+    <h1 class="health_taital">Comenzemos cuentanos...</h1>
+   
+  </div>
+  
+  <!-- Fila de botones -->
+  <div class="row justify-content-center">
+    <!-- Botón 1 -->
+    <div class="col-md-5 col-sm-12 mb-4">
+      <a href="{{ route('loginDoctor') }}" class="custom-btn">
+        <img src="{{ asset('images/icon-2.png') }}" alt="Daily care experts" class="img-fluid">
+        <h4 class="mb-0">Eres un Doctor?</h4>
+      </a>
+    </div>
+    
+    <!-- Botón 2 -->
+    <div class="col-md-5 col-sm-12 mb-4">
+      <a href="{{ route('loginPaciente') }}" class="custom-btn">
+        <img src="{{ asset('images/icon-4.png') }}" alt="Balanced care" class="img-fluid">
+        <h4 class="mb-0">Eres un Paciente?</h4>
+      </a>
+    </div>
+  </div>
+</div>
