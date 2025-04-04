@@ -38,6 +38,12 @@
                         <a href="{{ route('registraPaciente') }}" class="text-decoration-none">Registrate</a>
                         <a href="{{ route('password.request') }}" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
                     </div>
+
+                    <!-- Botón para ir a la vista de registro -->
+                    <div class="text-center mt-3">
+                        <a href="{{ route('registrar.paciente') }}" class="btn btn-outline-secondary">Registrarse como paciente</a>
+                    </div>
+
                 </div>
             </div>
         </div>
