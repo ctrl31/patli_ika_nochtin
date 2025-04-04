@@ -19,3 +19,7 @@ Route::get('/registraPaciente', [PacienteController::class,'registraPaciente'])-
 //Routes Login
 Route::get('/loginDoctor', [AuthController::class,'loginDoctor'])->name('loginDoctor');
 Route::get('/loginPaciente', [AuthController::class,'loginPaciente'])->name('loginPaciente');
+
+
+
+
