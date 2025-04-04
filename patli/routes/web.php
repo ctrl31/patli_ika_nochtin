@@ -13,5 +13,13 @@ Route::get('/', [HomeController::class, 'homepage']);
 Route::get('/registraDoctor', [DoctorController::class,'registraDoctor'])->name('registraDoctor');
 Route::get('/registraPaciente', [PacienteController::class,'registraPaciente'])->name('registraPaciente');
 
+Route::get('/login/doctor', function () {
+    return view('auth.login_doctor');
+})->name('login.doctor');
+
+Route::get('/login/patient', function () {
+    return view('auth.login_patient');
+})->name('login.patient');
+
 
 
