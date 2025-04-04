@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Paciente extends Model
+class Paciente extends Authenticatable
 {
     use HasFactory, SoftDeletes;
     use HasApiTokens, Notifiable;
@@ -18,6 +18,8 @@ class Paciente extends Model
 
     protected $fillable = [
         // ... otros campos ...
+        'nombres',
+        'apellidos',
         'telefono',
         'email',
         'fecha_nacimiento',
@@ -26,6 +28,7 @@ class Paciente extends Model
         'tipo_padecimiento',
         'descripcion',
         'sexo',
+        'password',
         'discapacidad',
         'peso',
         'urgencia',

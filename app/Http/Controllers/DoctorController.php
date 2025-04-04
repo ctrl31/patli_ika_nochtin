@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Paciente;
+use App\Models\Peticion;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -45,6 +48,19 @@ class DoctorController extends Controller
         return view('register.registerDoctor');
 
     }
+    public function dashboardDoctor(){	
+        // Obtener todos los pacientes
+    $pacientes = Paciente::all();
+
+    // O también puedes filtrar desde aquí solo los urgentes
+    // $pacientesUrgentes = Paciente::where('urgencia', true)->get();
+
+    // Obtener las peticiones del doctor autenticado (ejemplo)
+    $doctor = auth()->guard('doctor')->user();
+    $peticiones = Peticion::where('idDoctor', $doctor->id)->with('paciente')->paginate(6);
+
+    return view('dashboard.dashboardDoctor', compact('pacientes', 'peticiones'));
+    }
 
     public function login(Request $request)
 {
@@ -55,7 +71,7 @@ class DoctorController extends Controller
 
     if (Auth::guard('doctor')->attempt(['cedula' => $request->cedula, 'password' => $request->password])) {
         $request->session()->regenerate();
-        return redirect()->intended('/doctor/dashboard');
+        return redirect()->route('dashboardDoctor')->with('success', 'Has iniciado sesión correctamente.');
     }
 
     return back()->withErrors([

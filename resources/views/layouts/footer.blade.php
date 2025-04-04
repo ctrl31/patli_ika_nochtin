@@ -1,7 +1,7 @@
 
    
    <!-- footer section start -->
-   <div class="footer_section layout_padding">
+   <div class="footer_section">
       <div class="container">
          <div class="row">
             <div class="col-lg-3 col-sm-6">
@@ -33,5 +33,5 @@
             </div>
          </div>
       </div>
-   </div>
+   </footer>
    <!-- footer section end -->

@@ -5,6 +5,7 @@ use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\PeticionController;
 
 //Ruta homepage
 Route::get('/', [HomeController::class, 'homepage']);
@@ -19,3 +20,9 @@ Route::get('/registraPaciente', [PacienteController::class,'registraPaciente'])-
 //Routes Login
 Route::get('/loginDoctor', [AuthController::class,'loginDoctor'])->name('loginDoctor');
 Route::get('/loginPaciente', [AuthController::class,'loginPaciente'])->name('loginPaciente');
+
+//Routes dashboard
+Route::get('/dashboardDoctor', [DoctorController::class,'dashboardDoctor'])->name('dashboardDoctor');
+//Routes Acceso
+Route::post('/login-doctor', [DoctorController::class,'login'])->name(  'login.doctor');
+Route::get('/doctor/peticiones/{id}', [PeticionController::class, 'show'])->name('doctor.peticiones.show');

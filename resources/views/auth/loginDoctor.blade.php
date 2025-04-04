@@ -2,7 +2,8 @@
 @section('title', 'Iniciar Sesión')
 
 @section('content')
-<div class="container my-5">
+
+ 
     <div class="row justify-content-center">
         <!-- Sección de login centrada -->
         <div class="col-md-6 col-lg-4">
@@ -10,13 +11,13 @@
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">🩺 Iniciar Sesión</h2>
                     <!-- Formulario de login Doctor -->
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ route('login.doctor') }}" method="POST">
                         @csrf
                         <!-- Campo de cedula -->
                         <div class="mb-3">
                             <label for="cedula" class="form-label">Ingresa tu cedula</label>
-                            <input type="cedula" name="email" id="email" class="form-control" placeholder="correo@ejemplo.com" required>
-                            @error('email')
+                            <input type="cedula" name="cedula" id="cedula" class="form-control" placeholder="cedula" required>
+                            @error('cedula')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -41,5 +42,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection

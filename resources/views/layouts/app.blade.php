@@ -20,15 +20,15 @@
     <!-- Aquí pueden ir tus enlaces a hojas de estilo -->
 </head>
 <body>
-  <div class="d-flex flex-column min-vh-100">
-      @include('layouts.header')
+ 
+    @include('layouts.header')
 
-      <main class="flex-grow-1">
-          @yield('content')
-      </main>
+  
+      @yield('content')
 
-      @include('layouts.footer')
-  </div>
+
+    @include('layouts.footer')
+
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
