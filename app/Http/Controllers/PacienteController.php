@@ -39,26 +39,28 @@ class PacienteController extends Controller
             // Los campos opcionales se omiten y tomarán valores null por defecto
         ]);
 
-        return response()->json([
-            'message' => 'Paciente registrado exitosamente',
-            'paciente' => $paciente
-        ], 201);
+        Auth::guard('paciente')->login($paciente);
+
+// Redirigir a la vista para actualizar datos
+return redirect()->route('paciente.editar')->with('success', 'Registro exitoso, por favor completa tu información.');
     }
     //Ruta view
     public function registraPaciente(){
         return view('register.registerPaciente');
     }
-    public function dashboardPaciente(){	
-        // Obtener todos los pacientes
-    $doctores = Doctor::all();
-        
+    public function dashboardPaciente()
+{
+    $especialidad = request('especialidad');
 
-    // Obtener las peticiones del paciente autenticado (ejemplo)
+    $doctores = Doctor::when($especialidad, function ($query, $especialidad) {
+        return $query->where('especialidad', 'LIKE', "%{$especialidad}%");
+    })->get();
+
     $paciente = auth()->guard('paciente')->user();
-    
 
-    return view('dashboard.dashboardDoctor', compact('doctores', 'paciente'));
-    }
+    return view('dashboard.dashboardPaciente', compact('doctores', 'paciente'));
+}
+
     public function login(Request $request)
 {
     $request->validate([
@@ -98,4 +100,10 @@ public function actualizarDatos(Request $request)
         'paciente' => $paciente
     ]);
 }
+public function editarDatos()
+{
+    $paciente = auth()->guard('paciente')->user();
+    return view('dashboard.editarDatos', compact('paciente'));
+}
+
 }

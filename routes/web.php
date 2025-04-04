@@ -24,9 +24,19 @@ Route::get('/loginPaciente', [AuthController::class,'loginPaciente'])->name('log
 
 //Routes dashboard
 Route::get('/dashboardDoctor', [DoctorController::class,'dashboardDoctor'])->name('dashboardDoctor');
+Route::get('/dashboardPaciente', [PacienteController::class,'dashboardPaciente'])->name('dashboardPaciente');
 //Routes Acceso
 Route::post('/login-doctor', [DoctorController::class,'login'])->name(  'login.doctor');
 Route::post('/login-paciente', [PacienteController::class,'login'])->name(  'login.paciente');
 //
 Route::get('/doctor/peticiones/{id}', [PeticionController::class, 'show'])->name('doctor.peticiones.show');
+
+
+Route::put('/paciente/{id}/actualizar', [PacienteController::class, 'actualizarDatos'])->name('paciente.actualizar');
+
+// Muestra el formulario para editar datos del paciente
+Route::get('/paciente/editar', [PacienteController::class, 'editarDatos'])->name('paciente.editar');
+
+// Procesa el update (ya lo tienes)
+Route::put('/paciente/actualizar', [PacienteController::class, 'actualizarDatos'])->name('paciente.actualizar');
 
