@@ -35,12 +35,14 @@
       @yield('content')
 
 
-    @include('layouts.footer')
+   
 
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
   @stack('scripts')
+
+  @include('layouts.footer')
 </body>
 
 </html>

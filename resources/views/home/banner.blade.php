@@ -6,12 +6,9 @@
                   <div class="container">
                      <div class="row">
                         <div class="col-md-6">
-                           <h1 class="banner_taital">Health <br><span style="color: #151515;">Care</span></h1>
-                           <p class="banner_text">There are many variations of passages of Lorem Ipsum</p>
-                           <div class="btn_main">
-                              <div class="more_bt"><a href="#">Contact Now</a></div>
-                              <div class="contact_bt"><a href="#">Get A Quote</a></div>
-                           </div>
+                           <h1 class="banner_taital">Tu Salud <br><span style="color: #151515;">Nuestra Prioridad</span></h1>
+                           <p class="banner_text"> Estamos aquí para cuidar de ti y de los tuyos. Descubre cómo la tecnología puede ayudarte a vivir mejor.</p>
+                           
                         </div>
                         <div class="col-md-6">
                            <div class="image_1"><img src="images/img-1.png"></div>
