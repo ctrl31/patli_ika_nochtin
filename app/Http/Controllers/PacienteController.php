@@ -86,4 +86,16 @@ public function actualizarDatos(Request $request)
         'paciente' => $paciente
     ]);
 }
+
+
+public function logout(Request $request)
+{
+    Auth::guard('paciente')->logout(); // Cierra la sesión del paciente
+
+    $request->session()->invalidate(); // Invalida la sesión actual
+    $request->session()->regenerateToken(); // Regenera el token CSRF por seguridad
+
+    return redirect('/'); // Redirige a la página de inicio
+}
+
 }

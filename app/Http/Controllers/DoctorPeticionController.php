@@ -2,73 +2,98 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Peticion;
 use App\Models\Mensajeria;
-use Illuminate\Http\Request;
 
 class DoctorPeticionController extends Controller
 {
     public function index()
     {
-        $doctorId = auth()->guard('doctor')->id();
+        $doctorId = Auth::guard('doctor')->id();
         $peticiones = Peticion::with('paciente')
             ->where('idDoctor', $doctorId)
-            ->orderBy('created_at', 'desc')
-            ->paginate(5); // 5 peticiones por página
+            ->latest()
+            ->paginate(5);
 
         return view('doctor.peticiones', compact('peticiones'));
     }
 
-    public function show($id)
+    public function show(Peticion $peticion)
     {
-        $peticion = Peticion::with('paciente')->findOrFail($id);
         $paciente = $peticion->paciente;
-
-        // Calcular edad
         $edad = now()->diffInYears($paciente->fecha_nacimiento);
 
-        // Construir mensaje dinámico
-        $mensaje = "Hola me llamo {$paciente->nombres} {$paciente->apellidos}, soy un(a) {$paciente->sexo} de {$edad} años";
+        $mensaje = "Hola, me llamo {$paciente->nombres} {$paciente->apellidos}, soy un(a) {$paciente->sexo} de {$edad} años";
 
-        if ($paciente->tipo_padecimiento && $paciente->tipo_padecimiento != 'ninguno') {
+        if (!empty($paciente->tipo_padecimiento) && $paciente->tipo_padecimiento !== 'ninguno') {
             $mensaje .= ", con {$paciente->tipo_padecimiento}";
         }
 
-        if ($paciente->discapacidad) {
+        if (!empty($paciente->discapacidad)) {
             $mensaje .= ", {$paciente->discapacidad}";
         }
 
         $mensaje .= " y me gustaría recibir atención.";
 
-        return view('doctor.peticion-detalle', [
-            'peticion' => $peticion,
-            'mensaje' => $mensaje
+        return view('doctor.peticion-detalle', compact('peticion', 'mensaje'));
+    }
+
+    public function crearMensaje(Request $request, Peticion $peticion)
+    {
+        $request->validate([
+            'mensaje' => 'required|string|min:10',
         ]);
-    }
-
-    public function destroy($id)
-    {
-        Peticion::destroy($id);
-        return back()->with('success', 'Petición eliminada');
-    }
-
-    public function crearMensaje(Request $request, $id)
-    {
-        $peticion = Peticion::findOrFail($id);
 
         Mensajeria::create([
             'idPaciente' => $peticion->idPaciente,
             'idDoctor' => $peticion->idDoctor,
             'mensaje' => $request->mensaje,
-            'estatusMensaje' => 'enviado'
+            'estatusMensaje' => 'enviado',
         ]);
 
-        // Opcional: Eliminar la petición después de crear el mensaje
         $peticion->delete();
 
-        return redirect()->route('doctor.peticiones')
-            ->with('success', 'Mensaje enviado correctamente');
+        return response()->json([
+            'success' => true,
+            'message' => 'Mensaje enviado correctamente',
+        ]);
     }
+
+    public function destroy(Peticion $peticion)
+    {
+        $peticion->delete();
+
+        return back()->with('success', 'Petición eliminada correctamente');
+    }
+
+
+    public function getPeticion($id)
+{
+    $peticion = Peticion::with('paciente')->findOrFail($id);
+    $paciente = $peticion->paciente;
+
+    $edad = now()->diffInYears($paciente->fecha_nacimiento);
+
+    // Construimos el mensaje dinámico
+    $mensaje = "Hola, me llamo {$paciente->nombres} {$paciente->apellidos}, soy un(a) {$paciente->sexo} de {$edad} años";
+
+    if (!empty($paciente->tipo_padecimiento) && $paciente->tipo_padecimiento !== 'ninguno') {
+        $mensaje .= ", con {$paciente->tipo_padecimiento}";
+    }
+
+    if (!empty($paciente->discapacidad)) {
+        $mensaje .= ", {$paciente->discapacidad}";
+    }
+
+    $mensaje .= " y me gustaría recibir atención.";
+
+    return response()->json([
+        'success' => true,
+        'mensaje' => $mensaje,
+        'peticion_id' => $peticion->id,
+    ]);
+}
+
 }

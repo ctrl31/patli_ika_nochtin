@@ -48,7 +48,7 @@ class DoctorController extends Controller
         return view('register.registerDoctor');
 
     }
-    public function dashboardDoctor(){	
+    public function dashboardDoctor(){
         // Obtener todos los pacientes
     $pacientes = Paciente::all();
 
@@ -88,4 +88,15 @@ public function listarPacientesUrgentes()
         'pacientes' => $pacientesUrgentes
     ]);
 }
+
+public function logout(Request $request)
+{
+    Auth::guard('doctor')->logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/')->with('success', 'Has cerrado sesión correctamente.');
+}
+
 }

@@ -51,7 +51,7 @@ return [
         'driver' => 'eloquent',
         'model' => App\Models\Doctor::class,
     ],
-    'pacientes' => [
+'pacientes' => [
         'driver' => 'eloquent',
         'model' => App\Models\Paciente::class,
     ],

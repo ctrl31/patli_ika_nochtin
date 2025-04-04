@@ -855,12 +855,25 @@ button {
 
 .footer_section {
     width: 100%;
-    float: left;
     background-color: #252525;
-    height: auto;
-    padding-bottom: 50px;
+    padding: 7% 0; /* Ajusta según necesidad */
     box-shadow: 0px 24px 19px -1px #222223;
     position: relative;
+    clear: both; /* Elimina la necesidad del float */
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .footer_section {
+        padding: 5% 0; /* Menos padding en móviles */
+        box-shadow: 0px 10px 15px -5px #222223; /* Sombra más sutil */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer_section {
+        padding: 5% 0; /* Aún más compacto en móviles pequeños */
+    }
 }
 
 .footer_logo {
