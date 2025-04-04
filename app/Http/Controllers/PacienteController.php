@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class PacienteController extends Controller
 {
@@ -57,6 +58,46 @@ class PacienteController extends Controller
 
     return back()->withErrors([
         'telefono' => 'Las credenciales no coinciden con nuestros registros.',
+    ]);
+}
+
+
+public function actualizarDatos(Request $request)
+{
+    $paciente = auth()->guard('paciente')->user();
+
+    $validated = $request->validate([
+        'telefono' => 'sometimes|string|max:20',
+        'email' => [
+            'sometimes',
+            'email',
+            'max:100',
+            Rule::unique('pacientes')->ignore($paciente->id)
+        ],
+        'fecha_nacimiento' => 'sometimes|date',
+        'curp' => 'sometimes|string|max:18',
+        'nss' => 'nullable|string|max:20',
+        'tipo_padecimiento' => [
+            'nullable',
+            'string',
+            Rule::in(['cronico', 'agudo', 'ninguno'])
+        ],
+        'descripcion' => 'nullable|string',
+        'sexo' => 'sometimes|string|max:10',
+        'discapacidad' => 'sometimes|boolean',
+        'peso' => 'nullable|numeric|between:0,300',
+    ]);
+
+    // Convertir CURP a mayúsculas si está presente
+    if (isset($validated['curp'])) {
+        $validated['curp'] = strtoupper($validated['curp']);
+    }
+
+    $paciente->update($validated);
+
+    return response()->json([
+        'message' => 'Datos actualizados correctamente',
+        'paciente' => $paciente
     ]);
 }
 }

@@ -17,8 +17,7 @@ class Paciente extends Model
     protected $table = 'pacientes';
 
     protected $fillable = [
-        'nombres',
-        'apellidos',
+        // ... otros campos ...
         'telefono',
         'email',
         'fecha_nacimiento',
@@ -29,7 +28,14 @@ class Paciente extends Model
         'sexo',
         'discapacidad',
         'peso',
-        'password'
+    ];
+
+    protected $casts = [
+        'fecha_nacimiento' => 'date',
+        'discapacidad' => 'boolean',
+        'peso' => 'decimal:2',
+        'email_verified_at' => 'datetime',
+        'tipo_padecimiento' => 'string',
     ];
 
     protected $hidden = [
@@ -41,10 +47,4 @@ class Paciente extends Model
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'fecha_nacimiento' => 'date',
-        'discapacidad' => 'boolean',
-        'peso' => 'decimal:2',
-        'email_verified_at' => 'datetime',
-    ];
 }
