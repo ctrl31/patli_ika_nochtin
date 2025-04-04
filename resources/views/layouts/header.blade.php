@@ -10,16 +10,14 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="{{ route('homepage') }}">Home</a>
+               </li>
+              
+               <li class="nav-item">
+                  <a class="nav-link" href="{{route('loginDoctor')}}">Doctor</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="health.html">Health</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="medicine.html">Medicine</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="news.html">News</a>
+                  <a class="nav-link" href="{{route('loginPaciente')}}">Pacientes</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="client.html">Client</a>

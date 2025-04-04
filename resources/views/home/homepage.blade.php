@@ -18,7 +18,9 @@
     ];
 @endphp
 
+
 @include('home.card', ['contacts' => $contacts])
+@include('home.chatbot')
 @include('home.client')
 
 

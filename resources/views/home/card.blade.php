@@ -1,23 +1,34 @@
-<div class="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-4">
-    <h2 class="text-xl font-semibold text-red-600 text-center"> Números de Emergencia   </h2>
-    <ul class="mt-4 space-y-4">
-        @foreach ($contacts as $contact)
-            <li class="flex items-center gap-4 p-3 border rounded-lg shadow-sm bg-gray-100">
-                <div class="flex-1">
-                    <p class="text-lg font-medium">{{ $contact['name'] }}</p>
-                    <p class="text-gray-500 flex items-center gap-1">
-                        📞 <a href="tel:{{ $contact['phone'] }}" class="text-blue-600 hover:underline">{{ $contact['phone'] }}</a>
-                    </p>
-                    <p class="text-gray-400 flex items-center gap-1">
-                        📍 {{ $contact['location'] }}
-                    </p>
-                </div>
-            </li>
-        @endforeach
-    </ul>
+<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6">
+    <h2 class="text-3xl font-semibold text-red-600 text-center"> Números de Emergencia </h2>
 
-    <h3 class="text-lg font-semibold text-gray-700 mt-4">🏥 Hospitales Cercanos</h3>
-<div id="map" style="height: 300px; width: 100%;" class="mt-3"></div>
+    <!-- Tabla de contacto -->
+    <div class="overflow-x-auto mt-6 content-center">
+        <table class="min-w-full table-auto border-collapse">
+            <thead>
+                <tr class="bg-gray-100 text-gray-600">
+                    <th class="py-4 px-8 text-center text-xl">Servicio</th>
+                    <th class="py-4 px-8 text-center text-xl">Número</th>
+                    <th class="py-4 px-8 text-center text-xl">Ubicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($contacts as $contact)
+                    <tr class="border-b hover:bg-gray-50 transition duration-300">
+                        <td class="py-4 px-8 text-center text-lg font-medium text-gray-800">{{ $contact['name'] }}</td>
+                        <td class="py-4 px-8 text-center text-lg">
+                            <a href="tel:{{ $contact['phone'] }}" class="text-blue-600 font-semibold hover:underline">{{ $contact['phone'] }}</a>
+                        </td>
+                        <td class="py-4 px-8 text-center text-lg text-gray-400">{{ $contact['location'] }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="text-2xl font-semibold text-gray-700 mt-6 text-center">🏥 Hospitales Cercanos</h3>
+
+    <div id="map" style="height: 350px; width: 100%;" class="mt-3"></div>
+</div>
 
 <script>
     function initMap() {
