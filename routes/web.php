@@ -32,3 +32,11 @@ Route::post('/login-paciente', [PacienteController::class,'login'])->name(  'log
 Route::get('/doctor/peticiones/{id}', [PeticionController::class, 'show'])->name('doctor.peticiones.show');
 
 
+Route::put('/paciente/{id}/actualizar', [PacienteController::class, 'actualizarDatos'])->name('paciente.actualizar');
+
+// Muestra el formulario para editar datos del paciente
+Route::get('/paciente/editar', [PacienteController::class, 'editarDatos'])->name('paciente.editar');
+
+// Procesa el update (ya lo tienes)
+Route::put('/paciente/actualizar', [PacienteController::class, 'actualizarDatos'])->name('paciente.actualizar');
+
