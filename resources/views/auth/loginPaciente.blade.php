@@ -12,11 +12,11 @@
                     <!-- Formulario de login Paciente -->
                     <form action="{{ route('login.paciente') }}" method="POST">
                         @csrf
-                        <!-- Campo de correo -->
+                        <!-- Campo de telefono -->
                         <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="correo@ejemplo.com" required>
-                            @error('email')
+                            <label for="telefono" class="form-label">Ingresa tu numero telefonico</label>
+                            <input type="telefono" name="telefono" id="telefono" class="form-control" placeholder="Ingresa tu numero" required>
+                            @error('telefono')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>

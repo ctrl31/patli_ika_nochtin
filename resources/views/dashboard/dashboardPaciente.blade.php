@@ -5,6 +5,7 @@
 @section('content')
 
 <div>
-    <h1 class="text-center">Bienvenido paciente {{$paciente}}!</h1>
+    <h1 class="text-center">Bienvenido paciente !</h1>
+    
 </div>
 @endsection

@@ -39,10 +39,7 @@ class PacienteController extends Controller
             // Los campos opcionales se omiten y tomarán valores null por defecto
         ]);
 
-        return response()->json([
-            'message' => 'Paciente registrado exitosamente',
-            'paciente' => $paciente
-        ], 201);
+        return redirect()->route('dashboardPaciente')->with('success', 'Paciente registrado exitosamente');
     }
     //Ruta view
     public function registraPaciente(){
@@ -56,8 +53,7 @@ class PacienteController extends Controller
     // Obtener las peticiones del paciente autenticado (ejemplo)
     $paciente = auth()->guard('paciente')->user();
     
-
-    return view('dashboard.dashboardDoctor', compact('doctores', 'paciente'));
+    return view('dashboard.dashboardPaciente', compact('doctores', 'paciente'));
     }
     public function login(Request $request)
 {
