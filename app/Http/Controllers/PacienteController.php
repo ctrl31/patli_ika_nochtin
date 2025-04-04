@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Doctor;
 use App\Models\Paciente;
+use App\Models\Peticion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +48,17 @@ class PacienteController extends Controller
     public function registraPaciente(){
         return view('register.registerPaciente');
     }
+    public function dashboardPaciente(){	
+        // Obtener todos los pacientes
+    $doctores = Doctor::all();
+        
 
+    // Obtener las peticiones del paciente autenticado (ejemplo)
+    $paciente = auth()->guard('paciente')->user();
+    
+
+    return view('dashboard.dashboardDoctor', compact('doctores', 'paciente'));
+    }
     public function login(Request $request)
 {
     $request->validate([
@@ -56,7 +68,7 @@ class PacienteController extends Controller
 
     if (Auth::guard('paciente')->attempt(['telefono' => $request->telefono, 'password' => $request->password])) {
         $request->session()->regenerate();
-        return redirect()->intended('/paciente/dashboard');
+        return redirect()->route('dashboardPaciente')->with('success', 'Has iniciado sesión correctamente.');
     }
 
     return back()->withErrors([

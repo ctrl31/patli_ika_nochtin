@@ -9,8 +9,8 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">🩺 Iniciar Sesión</h2>
-                    <!-- Formulario de login -->
-                    <form action="{{ route('login') }}" method="POST">
+                    <!-- Formulario de login Paciente -->
+                    <form action="{{ route('login.paciente') }}" method="POST">
                         @csrf
                         <!-- Campo de correo -->
                         <div class="mb-3">

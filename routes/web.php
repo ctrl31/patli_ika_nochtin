@@ -25,4 +25,6 @@ Route::get('/loginPaciente', [AuthController::class,'loginPaciente'])->name('log
 Route::get('/dashboardDoctor', [DoctorController::class,'dashboardDoctor'])->name('dashboardDoctor');
 //Routes Acceso
 Route::post('/login-doctor', [DoctorController::class,'login'])->name(  'login.doctor');
+Route::post('/login-paciente', [PacienteController::class,'login'])->name(  'login.paciente');
+//
 Route::get('/doctor/peticiones/{id}', [PeticionController::class, 'show'])->name('doctor.peticiones.show');
