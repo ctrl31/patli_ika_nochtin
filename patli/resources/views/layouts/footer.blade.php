@@ -1,4 +1,5 @@
 
+   
    <!-- footer section start -->
    <div class="footer_section layout_padding">
       <div class="container">
@@ -20,8 +21,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                <h1 class="adderss_text">Newsletter</h1>
-               <input type="text" class="Enter_text" placeholder="Enter your Emil" name="Enter your Emil">
-               <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+               
                <div class="social_icon">
                   <ul>
                      <li><a href="#"><img src="images/fb-icon.png"></a></li>

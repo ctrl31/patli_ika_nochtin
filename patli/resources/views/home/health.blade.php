@@ -1,8 +1,8 @@
  <!-- health section start -->
  <div class="health_section layout_padding">
       <div class="container">
-         <h1 class="health_taital">Best Of Health care for you</h1>
-         <p class="health_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+         <h1 class="health_taital">Especialidades</h1>
+         <p class="health_text">contamos con especialidades disponibles</p>
          <div class="health_section layout_padding">
             <div class="row">
                <div class="col-sm-7">
