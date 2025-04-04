@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -15,7 +16,6 @@ Route::post('/registrarPaciente', [PacienteController::class,'registrarPaciente'
 Route::get('/registraDoctor', [DoctorController::class,'registraDoctor'])->name('registraDoctor');
 Route::get('/registraPaciente', [PacienteController::class,'registraPaciente'])->name('registraPaciente');
 
-/* sugerencia de ruta para actualizar datos
-Route::middleware(['auth:paciente'])->group(function () {
-    Route::put('/paciente/actualizar-datos', [PacienteController::class, 'actualizarDatos']);
-});*/
+//Routes Login
+Route::get('/loginDoctor', [AuthController::class,'loginDoctor'])->name('loginDoctor');
+Route::get('/loginPaciente', [AuthController::class,'loginPaciente'])->name('loginPaciente');

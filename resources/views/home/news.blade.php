@@ -8,14 +8,15 @@
                <div class="col-lg-4 col-sm-6">
                   <div class="box_main">
                      <div class="icon_1"><img src="images/icon-2.png"></div>
-                     <h4 class="daily_text">¿Eres Doctor o Especialista?</h4>
+                     <h4 class="daily_text">Daily care experts</h4>
                   </div>
                </div>
                
+
                <div class="col-lg-4 col-sm-6">
                   <div class="box_main">
                      <div class="icon_1"><img src="images/icon-4.png"></div>
-                     <h4 class="daily_text_1">¿Eres paciente?</h4>
+                     <h4 class="daily_text_1">Balanced care</h4>
                   </div>
                </div>
             </div>
@@ -23,4 +24,4 @@
          <div class="getquote_bt"><a href="#">Get A Quote <span><img src="images/right-arrow.png"></span></a></div>
       </div>
    </div>
-   <!-- news section end -->    
+   <!-- news section end -->        
